@@ -18,7 +18,7 @@ function App() {
   if (user.role === 'student') return <studentDash user={user} onLogout={handleLogout} />;
   if (user.role === 'teacher') return <teachDash user={user} onLogout={handleLogout} />;
 
-  return <div>Unknown Role</div>;
+  return <div>Unknown Role</div>; 
 }
 
 export default App;

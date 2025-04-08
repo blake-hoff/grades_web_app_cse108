@@ -12,8 +12,8 @@ function CourseTable({courses, adding, removing, isStudent}) {
           {isStudent && <th>Action</th>}
         </tr>
       </thead>
-      <tbody>
-        
+      <tbody> 
+
       </tbody>
     </table>
   );
