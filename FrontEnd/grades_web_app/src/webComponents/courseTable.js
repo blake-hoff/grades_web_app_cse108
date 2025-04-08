@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from "react";
 
 function CourseTable({courses, adding, removing, isStudent}) {
@@ -18,3 +19,5 @@ function CourseTable({courses, adding, removing, isStudent}) {
     </table>
   );
 }
+=======
+>>>>>>> 49b8d353c157f41454bcd142d2713bbdc1570f89
