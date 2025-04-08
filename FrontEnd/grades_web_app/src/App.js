@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 import React, {useState, usestate} from 'react';
 import LoginPage from './webComponents/LoginPage';
 import studentDash from './studTeachCourse/studentDash';
@@ -23,5 +23,4 @@ function App() {
 }
 
 export default App;
-=======
->>>>>>> 49b8d353c157f41454bcd142d2713bbdc1570f89
+
