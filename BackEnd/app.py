@@ -405,13 +405,13 @@ def create_demo_data():
         
         # Create students
         student1 = User(
-            username="student1",
-            email="ajohnson@school.edu",
-            first_name="Alice",
-            last_name="Johnson",
+            username="proy",
+            email="proy3@ucmerced.edu",
+            first_name="Parthib",
+            last_name="Parthib",
             user_type="student",
         )
-        student1.set_password("password123")
+        student1.set_password("proy")
         
         student2 = User(
             username="student2",
