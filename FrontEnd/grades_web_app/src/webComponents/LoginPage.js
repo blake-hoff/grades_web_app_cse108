@@ -12,7 +12,7 @@ function LoginPage({ onLogin }) {
       body: JSON.stringify({ username, password })
     });
     const data = await response.json();
-    if (response.ok) onLogin(data);
+    if (response.ok) onLogin(data.user);
     else alert(data.error);
   };
 

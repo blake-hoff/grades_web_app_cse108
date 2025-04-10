@@ -6,10 +6,14 @@ function StudentDashboard({ user, onLogout }) {
   const [allCourses, setAllCourses] = useState([]);
 
   const fetchCourses = async () => {
-    const myRes = await fetch(`http://127.0.0.1:5000/student/courses?user_id=${user.id}`);
-    const allRes = await fetch(`http://127.0.0.1:5000/courses`);
-    setMyCourses(await myRes.json());
-    setAllCourses(await allRes.json());
+    const studentResponse = await fetch('/api/student/classes', { credentials: 'include' });
+    const studentData = await studentResponse.json();
+    
+    const classResponse = await fetch('/api/classes', { credentials: 'include' });
+    const classData = await classResponse.json();
+    
+    setMyCourses(studentData.classes);
+    setAllCourses(classData.classes);    
   };
 
   useEffect(() => {

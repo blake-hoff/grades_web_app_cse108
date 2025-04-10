@@ -16,10 +16,10 @@ function App() {
   };
 
   if (!user) return <LoginPage onLogin={handleLogin} />
-  if (user.role === 'student') return <StudentDashboard user={user} onLogout={handleLogout} />;
+  if (user.user_type === 'student') return <StudentDashboard user={user} onLogout={handleLogout} />;
   //if (user.role === 'teacher') return <teachDash user={user} onLogout={handleLogout} />;
 
-  return <div>Unknown Role</div>; 
+  return <div>Student {user.name} has an unknown role</div>; 
 }
 
 export default App;
