@@ -17,7 +17,6 @@ db = SQLAlchemy(app)
 # Models
 class User(db.Model):
     __tablename__ = 'users'
-    
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(50), unique=True, nullable=False)
     password_hash = db.Column(db.String(256), nullable=False)
@@ -496,11 +495,6 @@ def create_demo_data():
         db.session.rollback()
         return f"Error creating demo data: {str(e)}"
 
-# Create tables and initialize demo data
-@app.before_first_request
-def initialize_database():
-    db.create_all()
-    create_demo_data()
 
 # For direct execution
 if __name__ == '__main__':
