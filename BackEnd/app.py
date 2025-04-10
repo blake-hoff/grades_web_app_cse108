@@ -48,7 +48,7 @@ class User(db.Model):
         }
         
         if self.user_type == 'student':
-            data['graduation_year'] = self.graduation_year
+            data['graduation_year'] = None
         elif self.user_type == 'teacher':
             data['department'] = self.department
             
