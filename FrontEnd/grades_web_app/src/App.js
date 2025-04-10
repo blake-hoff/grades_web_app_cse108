@@ -1,8 +1,8 @@
 
-import React, {useState, usestate} from 'react';
+import React, {useState} from 'react';
 import LoginPage from './webComponents/LoginPage';
-import studentDash from './studTeachCourse/studentDash';
-import teachDash from './studTeachCourse/teachDash';
+import StudentDashboard from './studTeachCourse/studentDash';
+//import teachDash from './studTeachCourse/teachDash';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -16,8 +16,8 @@ function App() {
   };
 
   if (!user) return <LoginPage onLogin={handleLogin} />
-  if (user.role === 'student') return <studentDash user={user} onLogout={handleLogout} />;
-  if (user.role === 'teacher') return <teachDash user={user} onLogout={handleLogout} />;
+  if (user.role === 'student') return <StudentDashboard user={user} onLogout={handleLogout} />;
+  //if (user.role === 'teacher') return <teachDash user={user} onLogout={handleLogout} />;
 
   return <div>Unknown Role</div>; 
 }

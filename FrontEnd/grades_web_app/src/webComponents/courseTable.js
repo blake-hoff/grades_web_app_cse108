@@ -13,9 +13,27 @@ function CourseTable({courses, adding, removing, isStudent}) {
         </tr>
       </thead>
       <tbody> 
-
+        {courses.map((course) =>
+          <tr key = {course.id}>
+            <td>{course.name}</td>
+            <td>{course.teacher}</td>
+            <td>{course.time}</td>
+            <td>{course.enrolled}/{course.capacity}</td>
+            {isStudent && (
+              <td>
+                {course.enrolled < course.capacity ? (
+                  <button onClick={() => adding(course.id)}>➕</button>
+                ) : (
+                  <button onClick={() => removing(course.id)}>➖</button>
+                )}
+              </td>
+            )}
+          </tr>
+        )}
       </tbody>
     </table>
   );
 }
+
+export default CourseTable;
 
