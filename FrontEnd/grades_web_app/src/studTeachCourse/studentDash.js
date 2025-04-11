@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import CourseTable from '../webComponents/courseTable';
+import Header from '../webComponents/helper/Header';
 
 function StudentDashboard({ user, onLogout }) {
   const [myCourses, setMyCourses] = useState([]);
@@ -41,10 +42,7 @@ function StudentDashboard({ user, onLogout }) {
 
   return (
     <div>
-      <h2>
-        Welcome {user.first_name}! <span className="user-role">({user.user_type})</span>
-      </h2>
-      <button className="signout-button" onClick={onLogout}>Sign Out</button>
+      <Header user={user} onLogout={onLogout} />
       <h3>Your Courses</h3>
       <CourseTable courses={myCourses} isStudent={false} />
       <h3>Available Courses</h3>
