@@ -1,6 +1,6 @@
 import React from "react";
 
-function CourseTable({courses, onAdd, onRemove, isStudent}) {
+function CourseTable({courses, studentCourses = [], onAdd, onRemove, isStudent}) {
   return (
     <table className="course-table">
       <thead>
@@ -24,7 +24,7 @@ function CourseTable({courses, onAdd, onRemove, isStudent}) {
                 {course.enrolled_count < course.capacity ? (
                   <button onClick={() => onAdd(course.id)}>➕</button>
                 ) : (
-                  <button onClick={() => onRemove(course.id)}>➖</button>
+                  <button onClick={() => removing(course.id)}>➖</button>
                 )}
               </td>
             )}
@@ -34,6 +34,7 @@ function CourseTable({courses, onAdd, onRemove, isStudent}) {
     </table>
   );
 }
+
 
 export default CourseTable;
 
