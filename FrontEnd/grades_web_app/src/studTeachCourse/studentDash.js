@@ -21,10 +21,11 @@ function StudentDashboard({ user, onLogout }) {
   }, []);
 
   const enroll = async (id) => {
-    await fetch(`http://127.0.0.1:5000/courses/enroll`, {
+    await fetch('/api/student/enroll', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ student_id: user.id, course_id: id })
+      credentials: 'include',
+      body: JSON.stringify({ class_id: id })
     });
     fetchCourses();
   };
