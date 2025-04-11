@@ -24,7 +24,7 @@ function CourseTable({courses, onAdd, onRemove, isStudent}) {
                 {course.enrolled_count < course.capacity ? (
                   <button onClick={() => onAdd(course.id)}>➕</button>
                 ) : (
-                  <button onClick={() => removing(course.id)}>➖</button>
+                  <button onClick={() => onRemove(course.id)}>➖</button>
                 )}
               </td>
             )}
