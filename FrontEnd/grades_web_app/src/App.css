@@ -180,3 +180,9 @@ ul.course-list button {
 ul.course-list button:hover {
   background-color: #117a8b;
 }
+.signout-button {
+  position: absolute;
+  top: 0px;
+  right: 20px;
+  width: auto;
+}
