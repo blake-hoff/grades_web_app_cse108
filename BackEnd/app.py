@@ -63,6 +63,7 @@ class Class(db.Model):
     description = db.Column(db.Text, nullable=True)
     capacity = db.Column(db.Integer, nullable=False)
     teacher_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    course_time = db.Column(db.String(50), nullable=True)
     
     # Relationships
     enrollments = db.relationship('Enrollment', backref='course', lazy=True)
@@ -77,6 +78,7 @@ class Class(db.Model):
             'teacher_id': self.teacher_id,
             'teacher_name': f"{self.teacher.first_name} {self.teacher.last_name}",
             'enrolled_count': len(self.enrollments),
+            'course_time': self.course_time,
         }
 
 class Enrollment(db.Model):
@@ -236,9 +238,9 @@ def create_class():
         class_name=data['class_name'],
         description=data.get('description'),
         capacity=data['capacity'],
-        teacher_id=session['user_id']
-    )
-    
+        teacher_id=session['user_id'],
+        course_time=data.get('course_time'),
+    )    
     try:
         db.session.add(new_class)
         db.session.commit()
@@ -442,7 +444,8 @@ def create_demo_data():
             class_name="Introduction to Algebra",
             description="Basic algebraic concepts for beginners",
             capacity=30,
-            teacher_id=teacher1.id
+            teacher_id=teacher1.id,
+            course_time="Mon & Wed 8:00 AM - 9:30 AM",
         )
         
         math201 = Class(
@@ -450,7 +453,8 @@ def create_demo_data():
             class_name="Advanced Calculus",
             description="Calculus for science and engineering students",
             capacity=25,
-            teacher_id=teacher1.id
+            teacher_id=teacher1.id,
+            course_time="Mon & Wed 10:00 AM - 11:30 AM",
         )
         
         sci101 = Class(
@@ -458,7 +462,8 @@ def create_demo_data():
             class_name="Introduction to Biology",
             description="Basic principles of biology and life sciences",
             capacity=35,
-            teacher_id=teacher2.id
+            teacher_id=teacher2.id,
+            course_time="Tue & Thu 9:00 AM - 10:30 AM",
         )
         
         sci201 = Class(
@@ -466,7 +471,8 @@ def create_demo_data():
             class_name="Chemistry Fundamentals",
             description="Basic chemistry concepts and lab work",
             capacity=20,
-            teacher_id=teacher2.id
+            teacher_id=teacher2.id,
+            course_time="Fri 1:00 PM - 4:00 PM",
         )
         
         db.session.add(math101)

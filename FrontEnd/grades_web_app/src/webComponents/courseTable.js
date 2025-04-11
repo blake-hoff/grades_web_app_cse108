@@ -17,7 +17,7 @@ function CourseTable({courses, adding, removing, isStudent}) {
           <tr key = {course.id}>
             <td>{course.class_name}</td>
             <td>{course.teacher_name}</td>
-            <td>{course.time}</td>
+            <td>{course.course_time}</td>
             <td>{course.enrolled_count}/{course.capacity}</td>
             {isStudent && (
               <td>
