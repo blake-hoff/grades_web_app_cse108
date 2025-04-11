@@ -65,7 +65,7 @@ class Class(db.Model):
     teacher_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     
     # Relationships
-    enrollments = db.relationship('Enrollment', backref='class', lazy=True)
+    enrollments = db.relationship('Enrollment', backref='course', lazy=True)
     
     def to_dict(self):
         return {
@@ -285,7 +285,7 @@ def update_grade(enrollment_id):
         return jsonify({'success': False, 'message': 'Enrollment not found'}), 404
     
     # Verify teacher teaches this class
-    if enrollment.class_.teacher_id != session['user_id']:
+    if enrollment.course.teacher_id != session['user_id']:
         return jsonify({'success': False, 'message': 'Access denied'}), 403
     
     try:
@@ -314,7 +314,7 @@ def get_student_classes():
     
     classes = []
     for enrollment in enrollments:
-        class_data = enrollment.class_.to_dict()
+        class_data = enrollment.course.to_dict()
         class_data['grade'] = enrollment.grade
         classes.append(class_data)
     
