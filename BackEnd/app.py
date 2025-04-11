@@ -6,7 +6,7 @@ from datetime import datetime
 import os
 
 app = Flask(__name__)
-CORS(app)  # Enable CORS to allow requests from the React frontend
+CORS(app, supports_credentials=True)  # Enable CORS to allow requests from the React frontend
 
 # Configure SQLAlchemy
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///student_grades.db'
