@@ -374,6 +374,22 @@ def enroll_in_class():
         db.session.rollback()
         return jsonify({'success': False, 'message': str(e)}), 500
 
+
+@app.route('/api/student/unenroll', methods=['POST'])
+def unenroll_from_class():
+    data = request.get_json()
+    class_id = data.get('class_id')
+
+    enrollment = Enrollment.query.filter_by(
+        student_id=session['user_id'],
+        class_id=class_id
+    ).first()
+
+    db.session.delete(enrollment)
+    db.session.commit()
+    return jsonify({'success': True}), 200
+
+
 # Helper function to create demo data
 def create_demo_data():
     """Create demo data for testing"""

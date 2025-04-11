@@ -31,10 +31,10 @@ function StudentDashboard({ user, onLogout }) {
   };
 
   const unenroll = async (id) => {
-    await fetch(`http://127.0.0.1:5000/courses/unenroll`, {
+    await fetch('/api/student/unenroll', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ student_id: user.id, course_id: id })
+      body: JSON.stringify({ class_id: id })
     });
     fetchCourses();
   };
@@ -46,7 +46,7 @@ function StudentDashboard({ user, onLogout }) {
       <h3>Your Courses</h3>
       <CourseTable courses={myCourses} isStudent={false} />
       <h3>Available Courses</h3>
-      <CourseTable courses={allCourses} onAdd={enroll} onRemove={unenroll} isStudent={true} />
+      <CourseTable courses={allCourses} studentCourses={myCourses} onAdd={enroll} onRemove={unenroll} isStudent={true} />
     </div>
   );
 }
