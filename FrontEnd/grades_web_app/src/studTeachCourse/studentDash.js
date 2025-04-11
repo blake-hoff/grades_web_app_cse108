@@ -41,7 +41,9 @@ function StudentDashboard({ user, onLogout }) {
 
   return (
     <div>
-      <h2>Welcome {user.first_name}!</h2>
+      <h2>
+        Welcome {user.first_name}! <span className="user-role">({user.user_type})</span>
+      </h2>
       <button className="signout-button" onClick={onLogout}>Sign Out</button>
       <h3>Your Courses</h3>
       <CourseTable courses={myCourses} isStudent={false} />
