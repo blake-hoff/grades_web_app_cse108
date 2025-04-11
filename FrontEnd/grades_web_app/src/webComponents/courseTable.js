@@ -21,7 +21,7 @@ function CourseTable({courses, adding, removing, isStudent}) {
             <td>{course.enrolled_count}/{course.capacity}</td>
             {isStudent && (
               <td>
-                {course.enrolled < course.capacity ? (
+                {course.enrolled_count < course.capacity ? (
                   <button onClick={() => adding(course.id)}>➕</button>
                 ) : (
                   <button onClick={() => removing(course.id)}>➖</button>
