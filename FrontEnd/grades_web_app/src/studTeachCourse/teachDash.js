@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import GradeTable from '../webComponents/gradesTable';
 
 
-function TeacherDashboard({user, onLogOut}) {
+function TeacherDashboard({user, onLogout}) {
   const [courses, setCourses] = useState([]);
   const [currentCourse, setSCurrentCourse] = useState(null);
   const [students, setStudents] = useState([]);
@@ -20,29 +20,32 @@ function TeacherDashboard({user, onLogOut}) {
 
   const selectCourse = async (courseId) => {
     setSCurrentCourse(courseId);
-    const res = await fetch(`https://127.0.0.1:5000/teacher/course/${courseId}`);
+    const res = await fetch(`/api/classes/${courseId}`, { credentials: 'include' });
     const data = await res.json();
-    setStudents(data);
+    setStudents(data.class.students || []);
   };
 
   const updateGrade = async (studentId, grade) => {
-    await fetch(`https://127.0.0.1:5000/teacher/course/${currentCourse}`, {
-      method: 'POST',
+    await fetch(`/api/teacher/grades/${studentId}`, {
+      method: 'PUT',
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({student_id: studentId, grade: parseInt(grade)})
+      credentials: 'include',
+      body: JSON.stringify({ grade })
     });
     selectCourse(currentCourse);
   };
 
   return (
     <div>
-      <h2>Welcome {user.name}!</h2>
-      <button onClick={onLogOut}>Sign Out</button>
+      <h2>
+        Welcome {user.first_name}! <span className="user-role">({user.user_type})</span>
+      </h2>
+      <button className="signout-button" onClick={onLogout}>Sign Out</button>
       <h3>Your Courses</h3>
       <ul>
         {courses.map(course => (
           <li key={course.id}>
-            <button onClick={() => selectCourse(course.id)}>{course.name}</button>
+            <button onClick={() => selectCourse(course.id)}>{course.class_name}</button>
           </li>
         ))}
       </ul>

@@ -12,7 +12,7 @@ function GradeTable({ students, onGradeChange }) {
       <tbody>
         {students.map((student) => (
           <tr key={student.id}>
-            <td>{student.name}</td>
+            <td>{student.first_name} {student.last_name}</td>
             <td>
               <input
                 type="number"
