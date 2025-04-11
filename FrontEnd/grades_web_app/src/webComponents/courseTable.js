@@ -1,6 +1,6 @@
 import React from "react";
 
-function CourseTable({courses, adding, removing, isStudent}) {
+function CourseTable({courses, onAdd, onRemove, isStudent}) {
   return (
     <table className="course-table">
       <thead>
@@ -22,7 +22,7 @@ function CourseTable({courses, adding, removing, isStudent}) {
             {isStudent && (
               <td>
                 {course.enrolled_count < course.capacity ? (
-                  <button onClick={() => adding(course.id)}>➕</button>
+                  <button onClick={() => onAdd(course.id)}>➕</button>
                 ) : (
                   <button onClick={() => removing(course.id)}>➖</button>
                 )}
