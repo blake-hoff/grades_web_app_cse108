@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import GradeTable from '../webComponents/gradesTable';
+import CourseTable from '../webComponents/courseTable';
 import Header from '../webComponents/helper/Header';
 
 
@@ -40,13 +41,11 @@ function TeacherDashboard({user, onLogout}) {
     <div>
       <Header user={user} onLogout={onLogout} />
       <h3>Your Courses</h3>
-      <ul>
-        {courses.map(course => (
-          <li key={course.id}>
-            <button onClick={() => selectCourse(course.id)}>{course.class_name}</button>
-          </li>
-        ))}
-      </ul>
+      <CourseTable
+        courses={courses}
+        isStudent={false}
+        onEdit={selectCourse}
+      />
       {currentCourse && (
         <div>
           <h3> Students and Grades</h3>

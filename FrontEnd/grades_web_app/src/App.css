@@ -192,3 +192,8 @@ ul.course-list button:hover {
   font-weight: normal;
   color: #666;
 }
+
+button.view-students-button {
+  all: unset;
+  cursor: pointer;
+}

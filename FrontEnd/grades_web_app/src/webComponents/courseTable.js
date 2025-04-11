@@ -1,6 +1,6 @@
 import React from "react";
 
-function CourseTable({ courses, studentCourses = [], onAdd, onRemove, isStudent }) {
+function CourseTable({ courses, studentCourses = [], onAdd, onRemove, onEdit, isStudent }) {
   return (
     <table className="course-table">
       <thead>
@@ -18,7 +18,17 @@ function CourseTable({ courses, studentCourses = [], onAdd, onRemove, isStudent 
 
           return (
             <tr key={course.id}>
-              <td>{course.class_name}</td>
+              <td>{course.class_name}
+              {onEdit && (
+                <button
+                  className="view-students-button"
+                  onClick={() => onEdit(course.id)}
+                  title="View Students"
+                >
+                  👁️
+                </button>
+              )}
+            </td>
               <td>{course.teacher_name}</td>
               <td>{course.course_time}</td>
               <td>{course.enrolled_count}/{course.capacity}</td>
