@@ -6,20 +6,25 @@ function GradeTable({ students, onGradeChange }) {
       <thead>
         <tr>
           <th>Student Name</th>
-          <th>Grade</th>
+          <th>Current Grade</th>
+          <th>New Grade</th>
+          <th>Action</th>
         </tr>
       </thead>
       <tbody>
         {students.map((student) => (
           <tr key={student.id}>
             <td>{student.first_name} {student.last_name}</td>
+            <td>{student.grade ?? '—'}</td>
             <td>
               <input
                 type="number"
-                value={student.grade || ''}
+                placeholder="Enter new grade"
                 onChange={(e) => onGradeChange(student.id, e.target.value)}
-                style={{ width: '60px' }}
               />
+            </td>
+            <td>
+              <button>Save</button>
             </td>
           </tr>
         ))}
