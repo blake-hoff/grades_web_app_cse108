@@ -15,10 +15,10 @@ function CourseTable({courses, adding, removing, isStudent}) {
       <tbody> 
         {courses.map((course) =>
           <tr key = {course.id}>
-            <td>{course.name}</td>
-            <td>{course.teacher}</td>
+            <td>{course.class_name}</td>
+            <td>{course.teacher_name}</td>
             <td>{course.time}</td>
-            <td>{course.enrolled}/{course.capacity}</td>
+            <td>{course.enrolled_count}/{course.capacity}</td>
             {isStudent && (
               <td>
                 {course.enrolled < course.capacity ? (

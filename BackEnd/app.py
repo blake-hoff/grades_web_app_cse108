@@ -76,7 +76,7 @@ class Class(db.Model):
             'capacity': self.capacity,
             'teacher_id': self.teacher_id,
             'teacher_name': f"{self.teacher.first_name} {self.teacher.last_name}",
-            'enrolled_count': len(self.enrollments)
+            'enrolled_count': len(self.enrollments),
         }
 
 class Enrollment(db.Model):
